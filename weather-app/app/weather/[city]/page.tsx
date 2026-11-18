@@ -4,7 +4,7 @@ import Image from "next/image"
 
 async function Weather({ params }: { params: Promise<{ city: string }>}) {
     const { city } = await params
-    const data = await getWeather(city)
+    const data = await getWeather(decodeURIComponent(city))
     console.log(data)
 
     if (data === null) {

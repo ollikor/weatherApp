@@ -23,6 +23,7 @@ async function Weather({ searchParams }: { searchParams: Promise<{ city?: string
         alt={data.weather[0].description}
         width={60}
         height={60}
+        loading="eager"
       />
     </div>
   )

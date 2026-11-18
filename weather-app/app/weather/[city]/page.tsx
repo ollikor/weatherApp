@@ -25,6 +25,7 @@ async function Weather({ params }: { params: Promise<{ city: string }>}) {
                 alt={data.weather[0].description}
                 width={60}
                 height={60}
+                loading="eager"
             />
         </div>
     )

@@ -11,7 +11,7 @@ export default function SearchForm() {
     function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
         e.preventDefault()
         if(city.trim() === "") return
-        router.push(`/weather/${encodeURIComponent(city.trim())}`)
+        router.push(`/?city=${encodeURIComponent(city.trim())}`)
     }
 
     return(
@@ -20,6 +20,7 @@ export default function SearchForm() {
                     value={city}
                     placeholder="Search city" 
                     onChange={(e) => setCity(e.target.value)}
+                    onClick={(e) => e.currentTarget.select()}
                 />
                 <button type="submit">Search</button>
             </form>

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { Search } from "lucide-react"
 
 export default function SearchForm() {
 
@@ -21,13 +22,13 @@ export default function SearchForm() {
                     placeholder="Search city" 
                     onChange={(e) => setCity(e.target.value)}
                     onClick={(e) => e.currentTarget.select()}
-                    className="flex-1 rounded-lg border border-zinc-400 bg-white px-4 py-2 text-black focus:border-sky-500 focus:outline-none"
+                    className="focus:outline-none border border-zinc-300 rounded-md flex-1 p-2"
                 />
                 <button 
                     type="submit"
-                    className="rounded-lg bg-sky-600 px-5 py-2 font-semibold text-white hover:bg-sky-700"
+                    className="text-white rounded-md p-2 transition active:scale-95 hover:bg-sky-500 bg-sky-400"
                 >
-                    Search
+                    <Search />
                 </button>
             </form>
     )

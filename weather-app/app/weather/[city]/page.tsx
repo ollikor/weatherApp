@@ -17,8 +17,10 @@ export default function WeatherPage({
     params: Promise<{ city: string }>
 }) {
     return (
-        <Suspense fallback={<p>Loading weather...</p>}>
-            <Forecast params={params} />
-        </Suspense>
+        <main>
+            <Suspense fallback={<p>Loading weather...</p>}>
+                <Forecast params={params} />
+            </Suspense>
+        </main>
     )
 }

@@ -65,7 +65,7 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
                 <button
                     aria-label="Search"
                     type="submit"
-                    className="rounded-md p-2 transition active:scale-95 hover:bg-sky-600 bg-sky-300"
+                    className="rounded-md p-2 transition active:scale-95 hover:bg-sky-600 bg-sky-200"
                 >
                     <Search />
                 </button>
@@ -74,10 +74,11 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
                 {history.length > 0 && (
                     <ul className="flex flex-col md:w-3/10 w-full empty:hidden">
                         {history.map((c) => (
-                            <Link className="flex justify-center md:justify-start p-1 transition hover:bg-sky-300" href={`/?city=${encodeURIComponent(c)}`}>{c.split(",")[0]}
-                                <li key={c}>
-                                </li>
-                            </Link>
+                            <li key={c}>
+                                <Link className="flex justify-center md:justify-start p-1 transition hover:bg-sky-200" href={`/?city=${encodeURIComponent(c)}`}>
+                                    {c.split(",")[0]}
+                                </Link>
+                            </li>
                         ))}
                     </ul>
                 )}

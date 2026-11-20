@@ -1,8 +1,12 @@
+import { cacheLife } from "next/cache"
 import type { Weather, Forecast } from "../types"
 
 const key = process.env.WEATHER_KEY
 
 export async function getWeather(city: string): Promise<Weather | null> {
+
+    "use cache"
+    cacheLife({ stale: 300, revalidate: 600, expire: 3600})
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&lang=en&appid=${key}`
     
@@ -15,6 +19,10 @@ export async function getWeather(city: string): Promise<Weather | null> {
 }
 
 export async function getForecast(city: string): Promise<Forecast | null> {
+
+    "use cache"
+    cacheLife({ stale: 300, revalidate: 600, expire: 3600})
+    
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&units=metric&lang=en&appid=${key}`   
     const response = await fetch(url)
 

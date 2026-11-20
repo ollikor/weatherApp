@@ -18,7 +18,7 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
         if (saved) {
             try {
                 const parsed = JSON.parse(saved)
-                
+
                 // eslint-disable-next-line react-hooks/set-state-in-effect
                 if (Array.isArray(parsed)) setHistory(parsed)
 
@@ -65,7 +65,7 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
                 <button
                     aria-label="Search"
                     type="submit"
-                    className="text-white rounded-md p-2 transition active:scale-95 hover:bg-sky-500 bg-sky-400"
+                    className="rounded-md p-2 transition active:scale-95 hover:bg-sky-600 bg-sky-300"
                 >
                     <Search />
                 </button>
@@ -74,10 +74,10 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
                 {history.length > 0 && (
                     <ul className="flex flex-col md:w-3/10 w-full empty:hidden">
                         {history.map((c) => (
-                            <li key={c}
-                                className="flex justify-center md:justify-start p-1 transition hover:bg-sky-400 hover:text-white">
-                                <Link href={`/?city=${encodeURIComponent(c)}`}>{c.split(",")[0]}</Link>
-                            </li>
+                            <Link className="flex justify-center md:justify-start p-1 transition hover:bg-sky-300" href={`/?city=${encodeURIComponent(c)}`}>{c.split(",")[0]}
+                                <li key={c}>
+                                </li>
+                            </Link>
                         ))}
                     </ul>
                 )}

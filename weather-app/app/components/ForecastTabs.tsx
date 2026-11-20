@@ -40,7 +40,7 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
     const days = [...new Set(data.list.map((item) => getDayKey(item.dt)))]
     const [selected, setSelected] = useState(days[0])
     return (
-        <div className="flex flex-col w-full max-w-2xl mx-auto p-8">
+        <div className="flex flex-col w-full max-w-2xl mx-auto pt-8 pb-8">
             <p className="p-2">{`${data.city.name} (${data.city.country.toLowerCase()}) ${formatDay(days[0], false)} - ${formatDay(days.at(-1)!, false)}`}</p>
             <div className="flex flex-row gap-2 mt-2">
                 <div>
@@ -52,11 +52,12 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                             key={day}
                             className={`flex items-center justify-center h-8 w-8 
                             rounded-full capitalize
-                            hover:bg-sky-400 
-                            hover:text-white
+                            hover:bg-sky-200 
+                            hover:text-black
+                            shadow
                             transition ${day === selected
-                                    ? "bg-sky-400 text-white"
-                                    : "bg-sky-200"
+                                    ? "bg-sky-200"
+                                    : "bg-gray-600 text-white"
                                 }`}
                         >
                             {formatDay(day).slice(0, 2)}
@@ -78,7 +79,7 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                         data.list
                             .filter((item) => getDayKey(item.dt) === selected)
                             .map((item) => (
-                                <tr className="bg-sky-400" key={item.dt}>
+                                <tr className="bg-sky-200 m-5" key={item.dt}>
                                     <td>{formatTime(item.dt)}</td>
                                     <td>
                                         <Image
@@ -93,7 +94,7 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                                     <td>
                                         <div>
                                             <p>
-                                                {item.main.temp} °C
+                                                {Math.round(item.main.temp)} °C
                                             </p>
                                             <p>
                                                 {item.weather[0].description}

@@ -8,7 +8,6 @@ async function Weather({ searchParams }: { searchParams: Promise<{ city?: string
 	const { city } = await searchParams
 	if (!city) return null
 	const data = await getWeather(city)
-	console.log(data)
 
 	if (data === null) {
 		return <p>City is not found.</p>

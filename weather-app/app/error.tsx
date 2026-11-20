@@ -9,8 +9,10 @@ export default function ErrorPage({
     return(
         <div>
             <h2>Something went wrong.</h2>
-            <p>Couldn't download data. Try again in a few minute.</p>
+            <p>Couldn&apos;t download data. Try again in a few minutes.</p>
             <button onClick={reset}>Try again</button>
+
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/">Back to home</a>
         </div>
     )

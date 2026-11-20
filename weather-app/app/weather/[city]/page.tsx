@@ -1,6 +1,6 @@
 import { Suspense } from "react"
 import { getForecast } from "../../services/weather"
-import ForecastTabs from "../../components/forecastTabs"
+import ForecastTabs from "../../components/ForecastTabs"
 
 async function Forecast({ params }: { params: Promise<{ city: string }> }) {
     const { city } = await params

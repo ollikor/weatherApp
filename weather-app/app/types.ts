@@ -17,11 +17,10 @@ export type Weather = {
 }
 
 export type Forecast = {
-    city: { name: string, timezone: number }
+    city: { name: string, country: string, timezone: number }
     list: {
         dt: number
         main: { temp: number, feels_like: number }
         weather: { description: string; icon: string }[]
-        snow?: {}
     }[]
 }

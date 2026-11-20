@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Suspense } from "react"
 import Image from "next/image"
 import type { Forecast } from "../types"
 
@@ -23,8 +22,8 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
         if (!withWeekday) return fullDate
 
         const weekday = date.toLocaleDateString("en-GB", {
-            ...(withWeekday && { weekday: "short" }),
             timeZone: "UTC",
+            weekday: "short"
         })
 
         return `${weekday} ${fullDate}`
@@ -42,8 +41,8 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
     const [selected, setSelected] = useState(days[0])
     return (
         <div className="flex flex-col w-full max-w-2xl mx-auto p-8">
-            <p className="p-2">{`${formatDay(days[0], false)} - ${formatDay(days.at(-1)!, false)}`}</p>
-            <div className="flex flex-row gap-2">
+            <p className="p-2">{`${data.city.name} (${data.city.country.toLowerCase()}) ${formatDay(days[0], false)} - ${formatDay(days.at(-1)!, false)}`}</p>
+            <div className="flex flex-row gap-2 mt-2">
                 <div>
                 </div>
                 {
@@ -65,7 +64,7 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                     )
                 }
             </div>
-            <table className="w-full text-center">
+            <table className="w-full text-center mt-2">
                 <thead>
                     <tr>
                         <th className="p-2">Time</th>

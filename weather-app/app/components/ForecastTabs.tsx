@@ -53,10 +53,13 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                             className={`flex items-center justify-center h-8 w-8 
                             rounded-full capitalize
                             hover:bg-sky-200 
+                            dark:hover:bg-sky-600
                             hover:text-black
+                            dark:hover:text-white
+                            dark:bg-gray-700
                             shadow
                             transition ${day === selected
-                                    ? "bg-sky-200"
+                                    ? "bg-sky-200 dark:bg-sky-600"
                                     : "bg-gray-600 text-white"
                                 }`}
                         >
@@ -79,7 +82,7 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                         data.list
                             .filter((item) => getDayKey(item.dt) === selected)
                             .map((item) => (
-                                <tr className="bg-sky-200 m-5" key={item.dt}>
+                                <tr className="odd:bg-sky-200 even:bg-sky-200/70 dark:odd:bg-sky-600 dark:even:bg-sky-600/90 m-5" key={item.dt}>
                                     <td>{formatTime(item.dt)}</td>
                                     <td>
                                         <Image

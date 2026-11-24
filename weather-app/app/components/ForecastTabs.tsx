@@ -4,40 +4,11 @@ import { useState } from "react"
 import Image from "next/image"
 import type { Forecast } from "../types"
 
+import { getDayKey, formatTime, formatDay } from "../utils/date"
+
 export default function ForecastTabs({ data }: { data: Forecast }) {
 
-    const getDayKey = (dt: number) =>
-        new Date((dt + data.city.timezone) * 1000).toISOString().slice(0, 10)
-
-    const formatDay = (day: string, withWeekday = true) => {
-        const date = new Date(day)
-
-        const fullDate = date.toLocaleDateString("fi-FI", {
-            timeZone: "UTC",
-            day: "numeric",
-            month: "numeric",
-            year: "numeric"
-        })
-
-        if (!withWeekday) return fullDate
-
-        const weekday = date.toLocaleDateString("en-GB", {
-            timeZone: "UTC",
-            weekday: "short"
-        })
-
-        return `${weekday} ${fullDate}`
-
-    }
-
-    const formatTime = (dt: number) =>
-        new Date((dt + data.city.timezone) * 1000).toLocaleTimeString("en-GB", {
-            timeZone: "UTC",
-            hour: "2-digit",
-            minute: "2-digit"
-        })
-
-    const days = [...new Set(data.list.map((item) => getDayKey(item.dt)))]
+    const days = [...new Set(data.list.map((item) => getDayKey(item.dt, data.city.timezone)))]
     const [selected, setSelected] = useState(days[0])
     return (
         <div className="flex flex-col w-full max-w-2xl mx-auto pt-8 pb-8">
@@ -80,10 +51,10 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                 <tbody>
                     {
                         data.list
-                            .filter((item) => getDayKey(item.dt) === selected)
+                            .filter((item) => getDayKey(item.dt, data.city.timezone) === selected)
                             .map((item) => (
                                 <tr className="odd:bg-sky-200 even:bg-sky-200/70 dark:odd:bg-sky-600 dark:even:bg-sky-600/90 m-5" key={item.dt}>
-                                    <td>{formatTime(item.dt)}</td>
+                                    <td>{formatTime(item.dt, data.city.timezone)}</td>
                                     <td>
                                         <Image
                                             className="mx-auto"

@@ -75,7 +75,7 @@ export default function ForecastTabs({ data }: { data: Forecast }) {
                                             </p>
                                         </div>
                                     </td>
-                                    <td>{item.main.feels_like} °C</td>
+                                    <td>{Math.round(item.main.feels_like)} °C</td>
                                 </tr>
                             )
                             )}

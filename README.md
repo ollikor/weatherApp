@@ -41,7 +41,7 @@ cd weatherApp/weather-app
 npm install
 ```
 
-Create `.env.local` and add your own key from [openweathermap.org](https://openweathermap.org/api):
+Create `.env.local` to weather-app folder and add your own key from [openweathermap.org](https://openweathermap.org/api):
 
 ```
 WEATHER_KEY=your_api_key

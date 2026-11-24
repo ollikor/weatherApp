@@ -8,7 +8,7 @@ vi.mock("../services/weather", () => ({
 }))
 
 beforeEach(() => {
-    vi.clearAllMocks
+    vi.clearAllMocks()
 })
 
 describe("findCity", () => {

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search } from "lucide-react"
@@ -12,6 +12,7 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
     const [history, setHistory] = useState<string[]>([])
     const [loaded, setLoaded] = useState(false)
     const router = useRouter()
+    const [isPending, startTransition] = useTransition()
 
     useEffect(() => {
         const saved = localStorage.getItem("history")
@@ -48,7 +49,9 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
             setHistory([found, ...history.filter((c) => c.toLowerCase() !== found.toLowerCase())].slice(0, 5))
         }
 
-        router.push(`/?city=${encodeURIComponent(found ?? name)}`)
+        startTransition(() => {
+            router.push(`/?city=${encodeURIComponent(found ?? name)}`)
+        })
     }
 
     return (
@@ -84,7 +87,9 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
                         ))}
                     </ul>
                 )}
-                {children}
+                <div className={`flex w-full transition-opacity ${isPending ? "animate-pulse":""}`}>
+                    {children}
+                </div>
             </div>
         </div>
     )

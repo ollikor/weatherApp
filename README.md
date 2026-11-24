@@ -3,9 +3,12 @@ Search the current weather and a 5-day forecast for any city.
 
 **Live demo:** [https://YOUR-APP.vercel.app ](https://weather-9dwiur6jp-quikkamedia.vercel.app)
 
+heme light
 ![Screenshot](weatherapp.png)
-![Screenshot](weatherappdark.png)
 ![Screenshot](weatherapp2.png)
+
+Phone theme dark
+![Screenshot](weatherappdark.png)
 ![Screenshot](weatherappdark2.png)
 
 ## Features

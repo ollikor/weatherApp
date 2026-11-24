@@ -18,7 +18,7 @@ Search the current weather and a 5-day forecast for any city.
 - Search history saved in the browser (localStorage)
 - Handles loading, error and "city not found" states
 - Responsive layout and dark mode support
-- Lighthouse: Performance 98, Accessibility 100, Best Practices 100, SEO 100
+- Lighthouse: Performance 99, Accessibility 100, Best Practices 100, SEO 100
 
 ## Tech stack
 

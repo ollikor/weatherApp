@@ -68,7 +68,7 @@ export default function SearchPanel({ children }: { children: React.ReactNode })
                 <button
                     aria-label="Search"
                     type="submit"
-                    className="rounded-md p-2 transition active:scale-95 hover:bg-sky-300 bg-sky-200 dark:bg-sky-600 dark:hover:bg-sky-600"
+                    className="rounded-md p-2 transition active:scale-95 hover:bg-sky-300 bg-sky-200 dark:bg-sky-800 dark:hover:bg-sky-900"
                 >
                     <Search />
                 </button>
